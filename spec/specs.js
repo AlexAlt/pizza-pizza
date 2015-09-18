@@ -47,10 +47,11 @@ describe('Order', function(){
     expect(testOrder.pizzas).to.eql([testPizza, testPizza2]);
   });
 
-  // it('calculates cost of the order', function(){
-  //   var testPizza =  new Pizza(1, "Large", ["Cheese"]);
-  //   var testPizza2 =  new Pizza(1, "Medium", ["Cheese"]);
-  //   var testOrder = new Order(testPizza, testPizza2);
-
-  // })
+  it('calculates total cost of the order', function(){
+    var testPizza =  new Pizza(1, "Large", ["Cheese"]);
+    var testPizza2 =  new Pizza(1, "Medium", ["Cheese"]);
+    var testOrder = new Order(testPizza);
+    testOrder.addPizzas(testPizza2);
+    expect(testOrder.total()).to.equal(28);
+  });
 });

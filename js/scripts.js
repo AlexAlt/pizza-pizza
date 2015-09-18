@@ -52,10 +52,10 @@ Order.prototype.addPizzas = function(pizza) {
 
 
 
-// Order.prototype.total = function(){
-//   var total = 0;
-//   this.pizzas.forEach(function(pizza){
-//     total = total + pizza.cost;
-//   })
-//   return total;
-// }
+Order.prototype.total = function(){
+  var total = 0;
+  this.pizzas.forEach(function(pizza){
+    total = total + pizza.cost();
+  })
+  return total;
+}
