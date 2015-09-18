@@ -126,6 +126,7 @@ $(document).ready(function(){
         $("ul#order-pizzas").append("<li>" + pizza.quantity + " " + pizza.pieSize + "</li>" + "<ul><li>" + pizza.toppings + "</ul></li>");
       });
     $(".order-total").append(newOrder.total());
+    $(".order-customer").append("<p>" + newOrder.customerInfo.name + "</p>" + "<p>" + newOrder.customerInfo.address + "</p>" + "<p>" + newOrder.customerInfo.phoneNumber + "</p>");
     $("form#pizza-order").hide();
     $(".header").text("Order Submitted");
 
