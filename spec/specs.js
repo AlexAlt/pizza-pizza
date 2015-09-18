@@ -54,6 +54,14 @@ describe('Order', function(){
     testOrder.addPizzas(testPizza2);
     expect(testOrder.total()).to.equal(28);
   });
+
+  it('adds customer info to the order', function(){
+    var testCustomer =  new Customer("Pizza Man", "123 Pizza Lane", "555.5555");
+    var testOrder = new Order();
+    testOrder.addCustomer(testCustomer);
+    expect(testOrder.customerInfo).to.eql([testCustomer]);
+  });
+
 });
 
 describe('Customer', function(){

@@ -50,6 +50,10 @@ Order.prototype.addPizzas = function(pizza) {
   this.pizzas.push(pizza);
 }
 
+Order.prototype.addCustomer = function(customer) {
+  this.customerInfo.push(customer);
+}
+
 Order.prototype.total = function(){
   var total = 0;
   this.pizzas.forEach(function(pizza){
