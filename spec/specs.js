@@ -19,4 +19,14 @@ describe('Pizza', function(){
     testPizza.addToppings("Cheese");
     expect(testPizza.toppings).to.eql(["Ronis", "Cheese"]);
   });
+
+  it('calculates cost of pizza', function(){
+    var testPizza =  new Pizza(1, "Large", ["Cheese"]);
+    expect(testPizza.cost()).to.equal(15);
+  });
+
+  it('calculates cost of pizza', function(){
+    var testPizza =  new Pizza(2, "Large", ["Cheese"]);
+    expect(testPizza.cost()).to.equal(30);
+  });
 });
