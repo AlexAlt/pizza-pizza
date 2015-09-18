@@ -42,8 +42,8 @@ describe('Order', function(){
    it('adds pizzas to the order', function(){
     var testPizza =  new Pizza(1, "Large", ["Cheese"]);
     var testPizza2 =  new Pizza(1, "Medium", ["Cheese"]);
-    var testOrder = new Order();
-    testOrder.addPizzas(testPizza, testPizza2);
+    var testOrder = new Order(testPizza);
+    testOrder.addPizzas(testPizza2);
     expect(testOrder.pizzas).to.eql([testPizza, testPizza2]);
   });
 

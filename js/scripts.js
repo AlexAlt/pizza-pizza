@@ -46,11 +46,16 @@ function Order(pizzas){
 
 }
 
-
-Order.prototype.total = function(){
-  var total = 0;
-  this.pizzas.forEach(function(pizza){
-    total = total + pizza.cost;
-  })
-  return total;
+Order.prototype.addPizzas = function(pizza) {
+  this.pizzas.push(pizza);
 }
+
+
+
+// Order.prototype.total = function(){
+//   var total = 0;
+//   this.pizzas.forEach(function(pizza){
+//     total = total + pizza.cost;
+//   })
+//   return total;
+// }
