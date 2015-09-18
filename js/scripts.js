@@ -34,3 +34,23 @@ Pizza.prototype.cost = function(){
 
   return cost * this.quantity;
 }
+
+function Order(pizzas){
+  if(pizzas) {
+    this.pizzas = [].concat(pizzas);
+  } else {
+    this.pizzas = [];
+  }
+
+  this.customerInfo = [];
+
+}
+
+
+Order.prototype.total = function(){
+  var total = 0;
+  this.pizzas.forEach(function(pizza){
+    total = total + pizza.cost;
+  })
+  return total;
+}

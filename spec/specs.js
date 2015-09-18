@@ -30,3 +30,27 @@ describe('Pizza', function(){
     expect(testPizza.cost()).to.equal(30);
   });
 });
+
+
+describe('Order', function(){
+  it('creates an order with the given specifications', function(){
+    var testPizza =  new Pizza(1, "Large", ["Cheese"]);
+    var testOrder = new Order(testPizza);
+    expect(testOrder.pizzas).to.eql([testPizza]);
+  });
+
+   it('adds pizzas to the order', function(){
+    var testPizza =  new Pizza(1, "Large", ["Cheese"]);
+    var testPizza2 =  new Pizza(1, "Medium", ["Cheese"]);
+    var testOrder = new Order();
+    testOrder.addPizzas(testPizza, testPizza2);
+    expect(testOrder.pizzas).to.eql([testPizza, testPizza2]);
+  });
+
+  // it('calculates cost of the order', function(){
+  //   var testPizza =  new Pizza(1, "Large", ["Cheese"]);
+  //   var testPizza2 =  new Pizza(1, "Medium", ["Cheese"]);
+  //   var testOrder = new Order(testPizza, testPizza2);
+
+  // })
+});
