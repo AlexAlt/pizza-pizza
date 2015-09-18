@@ -42,7 +42,7 @@ function Order(pizzas){
     this.pizzas = [];
   }
 
-  this.customerInfo = [];
+  this.customerInfo = null;
 
 }
 
@@ -51,7 +51,7 @@ Order.prototype.addPizzas = function(pizza) {
 }
 
 Order.prototype.addCustomer = function(customer) {
-  this.customerInfo.push(customer);
+  this.customerInfo = customer;
 }
 
 Order.prototype.total = function(){
@@ -60,12 +60,6 @@ Order.prototype.total = function(){
     total = total + pizza.cost();
   })
   return total;
-}
-
-function Customer(name, address, phoneNumber) {
-  this.name = name;
-  this.address =  address;
-  this.phoneNumber = phoneNumber;
 }
 
 

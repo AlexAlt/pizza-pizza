@@ -56,22 +56,14 @@ describe('Order', function(){
   });
 
   it('adds customer info to the order', function(){
-    var testCustomer =  new Customer("Pizza Man", "123 Pizza Lane", "555.5555");
+    var testCustomer =  {name: "Pizza Man", address: "123 Pizza Lane", phoneNumber:"555.5555"};
     var testOrder = new Order();
     testOrder.addCustomer(testCustomer);
-    expect(testOrder.customerInfo).to.eql([testCustomer]);
+    expect(testOrder.customerInfo).to.eql(testCustomer);
   });
 
 });
 
-describe('Customer', function(){
-  it('creates customer with the given specifications', function(){
-    var testCustomer =  new Customer("Pizza Man", "123 Pizza Lane", "555.5555");
-    expect(testCustomer.name).to.equal("Pizza Man");
-    expect(testCustomer.address).to.equal("123 Pizza Lane");
-    expect(testCustomer.phoneNumber).to.equal("555.5555");
-  });
-});
 
 
 
