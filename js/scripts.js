@@ -62,6 +62,7 @@ Order.prototype.total = function(){
   return total;
 }
 
+var pizzaFormIndex = 1;
 
 $(document).ready(function(){
   $("#add-pizza").click(function(){
@@ -69,9 +70,9 @@ $(document).ready(function(){
                   '<div class="new-pizza">' +
                     '<div class="form-group">' +
                       '<p>Select Size</p>' +
-                      '<input type="radio" name="size" value="small"> Small ' +
-                      '<input type="radio" name="size" value="medium"> Medium ' +
-                      '<input type="radio" name="size" value="large"> Large ' +
+                      '<input type="radio" name="size' + pizzaFormIndex + '" value="Small"> Small ' +
+                      '<input type="radio" name="size' + pizzaFormIndex + '" value="Medium"> Medium ' +
+                      '<input type="radio" name="size' + pizzaFormIndex + '" value="Large"> Large ' +
                     '</div>' +
 
                     '<div class="form-group">' +
@@ -89,20 +90,44 @@ $(document).ready(function(){
                       '<input type="text" id="quantity">'+
                     '</div>' +
                   '</div>');
+    pizzaFormIndex += 1;
   });
 
 
   $("form#pizza-order").submit(function(event){
     event.preventDefault();
 
-    var inputtedSize = $("input[name=size]:checked").val();
-    var inputtedQuantity = parseInt($("input#quantity").val());
+    var newOrder = new Order();
 
-    var newPizza = new Pizza(inputtedQuantity, inputtedSize);
+    $(".new-pizza").each(function(){
+      var inputtedSize =  $(this).find("input[name^=size]:checked").val();
+      var inputtedQuantity =  parseInt($(this).find("input#quantity").val());
 
-    $.each($("input[name=toppings]:checked"), function(){
-         newPizza.addToppings($(this).val());
+      var newPizza = new Pizza(inputtedQuantity, inputtedSize);
+
+      $.each($(this).find("input[name=toppings]:checked"), function(){
+           newPizza.addToppings($(this).val());
+      });
+      
+      newOrder.addPizzas(newPizza);
     });
+
+    var inputtedName = $("input#name").val();
+    var inputtedAddress = $("input#address").val();
+    var inputtedPhoneNumber = $("input#phone-number").val();
+
+    var newCustomer = {name: inputtedName, address: inputtedAddress, phoneNumber: inputtedPhoneNumber};
+
+    newOrder.addCustomer(newCustomer);
+
+    $(".order-show").show();
+    $("ul#order-pizzas").text("");
+      newOrder.pizzas.forEach(function(pizza) {
+        $("ul#order-pizzas").append("<li>" + pizza.quantity + " " + pizza.pieSize + "</li>" + "<ul><li>" + pizza.toppings + "</ul></li>");
+      });
+    $(".order-total").append(newOrder.total());
+    $("form#pizza-order").hide();
+    $(".header").text("Order Submitted");
 
   });
 });
