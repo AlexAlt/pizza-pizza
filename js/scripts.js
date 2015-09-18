@@ -63,4 +63,49 @@ Order.prototype.total = function(){
 }
 
 
+$(document).ready(function(){
+  $("#add-pizza").click(function(){
+    $("#new-pizzas").append(
+                  '<div class="new-pizza">' +
+                    '<div class="form-group">' +
+                      '<p>Select Size</p>' +
+                      '<input type="radio" name="size" value="small"> Small ' +
+                      '<input type="radio" name="size" value="medium"> Medium ' +
+                      '<input type="radio" name="size" value="large"> Large ' +
+                    '</div>' +
+
+                    '<div class="form-group">' +
+                      '<p>Toppings</p>' +
+                      '<input type="checkbox" name="toppings" value="Cheese"> Cheese ' +
+                      '<input type="checkbox" name="toppings" value="Spinach"> Spinach ' +
+                      '<input type="checkbox" name="toppings" value="Peppers"> Peppers ' +
+                      '<input type="checkbox" name="toppings" value="Mushrooms"> Mushrooms '  +
+                      '<input type="checkbox" name="toppings" value="Roasted Garlic"> Roasted Garlic ' +
+                      '<input type="checkbox" name="toppings" value="Tomatoes"> Tomatoes ' +
+                    '</div>' +
+
+                    '<div class="form-group">' +
+                      '<p>Quantity</p>' +
+                      '<input type="text" id="quantity">'+
+                    '</div>' +
+                  '</div>');
+  });
+
+
+  $("form#pizza-order").submit(function(event){
+    event.preventDefault();
+
+    var inputtedSize = $("input[name=size]:checked").val();
+    var inputtedQuantity = parseInt($("input#quantity").val());
+
+    var newPizza = new Pizza(inputtedQuantity, inputtedSize);
+
+    $.each($("input[name=toppings]:checked"), function(){
+         newPizza.addToppings($(this).val());
+    });
+
+  });
+});
+
+
 
