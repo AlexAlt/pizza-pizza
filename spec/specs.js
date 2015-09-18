@@ -55,3 +55,16 @@ describe('Order', function(){
     expect(testOrder.total()).to.equal(28);
   });
 });
+
+describe('Customer', function(){
+  it('creates customer with the given specifications', function(){
+    var testCustomer =  new Customer("Pizza Man", "123 Pizza Lane", "555.5555");
+    expect(testCustomer.name).to.equal("Pizza Man");
+    expect(testCustomer.address).to.equal("123 Pizza Lane");
+    expect(testCustomer.phoneNumber).to.equal("555.5555");
+  });
+});
+
+
+
+
